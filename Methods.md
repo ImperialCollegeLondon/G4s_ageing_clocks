@@ -128,7 +128,7 @@ stats_G4s <- data.frame(stats_G4s)
 write.table(stats_G4s, file="out/TET_analysis/mouse_TET1_C_all_G4_stats.csv", sep=";", row.names = F)
 ```
 
-### Obtaining global CpG sites {123}
+### Obtaining global CpG sites {#global-cpg}
 An example of how the sites of all CpG sites across the genome were obtained (here from mouse genome assembly mm10). 
 ```
 library(tidyverse)
