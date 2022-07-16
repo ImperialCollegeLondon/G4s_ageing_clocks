@@ -28,7 +28,7 @@ For better reproducibility, no exact paths or file names are given for the gener
 
 ## Data files
 Geo repositories are given in parentheses. 
-**Required**
+
 - G4 data:
 	- G4-seq: 
 		- Human G4-seq (K+) (GSM3003539)
@@ -76,7 +76,7 @@ CpG_locs <- load_CpG_data(CpG_file=$CpGs_ageing_clock_data_file)
 CpG_locs <- lift_over(coordinates=CpG_locs, chain_file=$chain_file)
 ```
 
-5. Get number of all CpGs in the genome and their overlaps with the G4 dataset. The output file will contain data on how many global CpGs overlap with G4s. This will be used later by other functions to obtain the enrichment value of G4s relative to global CpGs instead of relative to random regions in the genome. The `$all_CpGs_file.bed` containing the coordinates of all CpGs in the genome needs to be generated beforehand (see examples below).  The file `$genome_file` is a text file characterising valid regions of the genome (an [example](link_to_genome_file) is included in this repository). This step has a long execution time.
+5. Get number of all CpGs in the genome and their overlaps with the G4 dataset. The output file will contain data on how many global CpGs overlap with G4s. This will be used later by other functions to obtain the enrichment value of G4s relative to global CpGs instead of relative to random regions in the genome. The `$all_CpGs_file.bed` containing the coordinates of all CpGs in the genome needs to be generated beforehand [see examples below](#1).  The file `$genome_file` is a text file characterising valid regions of the genome. This step has a long execution time.
 ```
 results_all_CpGs <- global_CpG_overlap(all_CpGs_file=$all_CpGs_file.bed,
 	G4_locs=G4_locs,genome_file=$genome_file, reduce=F, window_sizes=window_sizes)
@@ -84,7 +84,7 @@ write.table(results_all_CpGs, file = "out/all_CpGs_props/all_CpGs_props_all_G4s_
 	sep=";", row.names=F)
 ```
 
-6. Run the colocalisation analysis for mutliple window sizes and obtain results on statistical tests. The function lets you specify a query and search set (make sure to shuffle the smaller dataset for increased performance by setting parameter `shuffle="q"` for shuffling the query or `shuffle="s"` for search set). `window sizes` can be an arbitrary vector of different window sizes to test. `random_trials` specifies the number of trials of random shuffling.  
+6. Run the colocalisation analysis for mutliple window sizes and obtain results on statistical tests - this function combines the 'enrichment relative to random' and 'enrichment relative to global CpGs' test. The function lets you specify a query and search set (make sure to shuffle the smaller dataset for increased performance by setting parameter `shuffle="q"` for shuffling the query or `shuffle="s"` for search set). `window sizes` can be an arbitrary vector of different window sizes to test. `random_trials` specifies the number of trials of random shuffling.  
 ```
 results <- analyse_window_size(query=CpG_locs, search_set=G4_locs, genome_file=$genome_file,
 	window_sizes=window_sizes, all_CpGs_props=results_all_CpGs, random_trials = 30, 
@@ -128,7 +128,7 @@ stats_G4s <- data.frame(stats_G4s)
 write.table(stats_G4s, file="out/TET_analysis/mouse_TET1_C_all_G4_stats.csv", sep=";", row.names = F)
 ```
 
-### Obtaining global CpG sites 
+[1]### Obtaining global CpG sites 
 An example of how the sites of all CpG sites across the genome were obtained (here from mouse genome assembly mm10). 
 ```
 library(tidyverse)
