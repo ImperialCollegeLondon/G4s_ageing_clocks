@@ -97,7 +97,7 @@ write.table(results$stats, file=$output_file, sep=";", row.names = F)
 ```
 
 ### G4 enrichment at protein binding sites
-This is the adapted workflow of how ChIP-seq data of epigenetic regulators (e.g. TET1) was colocalised with G4s to obtain potential enrichment of G4s within protein binding sites. This example can be adapted to the other ChIP-seq datasets (TET1/2 mouse, DNMT1, DNMT3b) to obtain the other published results. 
+This is the adapted workflow of how ChIP-seq data of epigenetic regulators (e.g. TET1) was colocalised with G4s to determine enrichment of G4s within protein binding sites. This example can be adapted to the other ChIP-seq datasets (TET1/2 mouse, DNMT1, DNMT3b) to obtain the other published results. 
 
 1. Load ChIP-seq data and bring in the correct format. Do some filtering to remove X, Y and mitochondrial chromosomes.
 ```
@@ -184,6 +184,6 @@ starts <- start(ranges(r))
 ends <- end(ranges(r))
 chroms <- as.data.frame(seqnames(r))
 merged_coor <- cbind(chroms, starts, ends)
-write.table(merged_coor, file="data/CpG_lists/all_CpGs_hg19_ws_50_merged.bed", sep="\t", col.names = F, row.names = F, quote = F)
+write.table(merged_coor, file="data/CpG_lists/all_CpGs_mm10_ws_50_merged.bed", sep="\t", col.names = F, row.names = F, quote = F)
 ```
 
