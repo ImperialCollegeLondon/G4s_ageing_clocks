@@ -129,7 +129,7 @@ write.table(stats_G4s, file="out/TET_analysis/mouse_TET1_C_all_G4_stats.csv", se
 ```
 
 ### Obtaining global CpG sites {#global-cpg}
-### My Great Heading {#custom-id}
+### My Great Heading {custom-id}
 An example of how the sites of all CpG sites across the genome were obtained (here from mouse genome assembly mm10). 
 ```
 library(tidyverse)
