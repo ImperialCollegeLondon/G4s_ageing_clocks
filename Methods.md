@@ -76,7 +76,7 @@ CpG_locs <- load_CpG_data(CpG_file=$CpGs_ageing_clock_data_file)
 CpG_locs <- lift_over(coordinates=CpG_locs, chain_file=$chain_file)
 ```
 
-5. Get number of all CpGs in the genome and their overlaps with the G4 dataset. The output file will contain data on how many global CpGs overlap with G4s. This will be used later by other functions to obtain the enrichment value of G4s relative to global CpGs instead of relative to random regions in the genome. The `$all_CpGs_file.bed` containing the coordinates of all CpGs in the genome needs to be generated beforehand [see examples below](#1).  The file `$genome_file` is a text file characterising valid regions of the genome. This step has a long execution time.
+5. Get number of all CpGs in the genome and their overlaps with the G4 dataset. The output file will contain data on how many global CpGs overlap with G4s. This will be used later by other functions to obtain the enrichment value of G4s relative to global CpGs instead of relative to random regions in the genome. The `$all_CpGs_file.bed` containing the coordinates of all CpGs in the genome needs to be generated beforehand [see examples below](#123).  The file `$genome_file` is a text file characterising valid regions of the genome. This step has a long execution time.
 ```
 results_all_CpGs <- global_CpG_overlap(all_CpGs_file=$all_CpGs_file.bed,
 	G4_locs=G4_locs,genome_file=$genome_file, reduce=F, window_sizes=window_sizes)
@@ -128,7 +128,7 @@ stats_G4s <- data.frame(stats_G4s)
 write.table(stats_G4s, file="out/TET_analysis/mouse_TET1_C_all_G4_stats.csv", sep=";", row.names = F)
 ```
 
-[1]### Obtaining global CpG sites 
+### Obtaining global CpG sites {#123}
 An example of how the sites of all CpG sites across the genome were obtained (here from mouse genome assembly mm10). 
 ```
 library(tidyverse)
